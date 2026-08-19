@@ -2,195 +2,113 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#000000">
-    <meta name="description" content="Hassany IPA — Premium 8 Ball Pool iOS Builds. منصة فاخرة لتحميل وتثبيت أحدث نسخ بلياردو لأجهزة الآيفون والآيباد.">
-    <meta name="keywords" content="Hassany IPA, 8 Ball Pool, iOS, Tweaks, Apps, Hassany Store">
-    <title>Hassany IPA | Premium iOS Builds</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hassany IPA | أحدث إصدارات 8 Ball Pool</title>
+    <meta name="description" content="استكشف أحدث إصدارات Hassany IPA وتجربة تثبيت سهلة وسريعة لأجهزة iOS.">
     
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts: Inter (En) & Tajawal (Ar) -->
+    <!-- Google Fonts: Tajawal -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         /* ==========================================================================
-           1. DESIGN TOKENS & VARIABLES
+           1. CSS Variables & Reset
            ========================================================================== */
         :root {
-            --bg-base: #000000;
-            --bg-surface: #0a0a0c;
-            --bg-surface-elevated: #121216;
-            --bg-glass: rgba(18, 18, 22, 0.6);
-            --bg-glass-hover: rgba(30, 30, 35, 0.7);
+            --primary-blue: #1677FF;
+            --dark-blue: #0B5ED7;
+            --light-blue: #EAF4FF;
             
-            --accent-primary: #0A84FF;
-            --accent-glow: rgba(10, 132, 255, 0.4);
-            --accent-secondary: #5E5CE6;
+            --bg-body: #F8FAFC;
+            --bg-white: #FFFFFF;
             
-            --text-main: #F5F5F7;
-            --text-secondary: #86868B;
-            --text-tertiary: #515154;
+            --text-main: #0F172A;
+            --text-muted: #64748B;
             
-            --border-subtle: rgba(255, 255, 255, 0.08);
-            --border-highlight: rgba(255, 255, 255, 0.15);
+            --border-color: #E2E8F0;
             
-            --status-success: #32D74B;
-            --status-warning: #FF9F0A;
-            --status-danger: #FF453A;
-            --status-archived: #8E8E93;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 12px 32px rgba(22, 119, 255, 0.12);
             
-            --font-en: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-ar: 'Tajawal', sans-serif;
-            
-            --radius-sm: 8px;
-            --radius-md: 16px;
-            --radius-lg: 24px;
-            --radius-xl: 32px;
-            
-            --transition-fast: 0.2s ease;
-            --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            
-            --nav-height: 80px;
+            --transition: all 0.3s ease;
+            --border-radius: 16px;
         }
 
-        /* ==========================================================================
-           2. RESET & BASE
-           ========================================================================== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
-            background-color: var(--bg-base);
+            background-color: var(--bg-body);
             color: var(--text-main);
-            font-family: var(--font-ar);
-            line-height: 1.5;
+            line-height: 1.6;
             overflow-x: hidden;
-            min-height: 100vh;
         }
 
-        /* Background Effects */
-        .ambient-bg {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            z-index: -1;
-            background: 
-                radial-gradient(circle at 15% 0%, rgba(10, 132, 255, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 85% 100%, rgba(94, 92, 230, 0.08) 0%, transparent 40%);
-            pointer-events: none;
+        a {
+            text-decoration: none;
+            color: inherit;
         }
 
-        .grid-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background-image: linear-gradient(var(--border-subtle) 1px, transparent 1px),
-                              linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px);
-            background-size: 50px 50px;
-            opacity: 0.15;
-            z-index: -1;
-            pointer-events: none;
-            mask-image: radial-gradient(ellipse at center, black 0%, transparent 80%);
-            -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 80%);
+        ul {
+            list-style: none;
         }
 
-        h1, h2, h3, h4, h5, h6 { font-weight: 700; }
-        .en-text { font-family: var(--font-en); }
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
-        button { border: none; background: none; cursor: pointer; font-family: inherit; }
-        
         .container {
-            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
         /* ==========================================================================
-           3. CUSTOM CURSOR
-           ========================================================================== */
-        @media (pointer: fine) {
-            .custom-cursor {
-                position: fixed;
-                top: 0; left: 0;
-                width: 8px; height: 8px;
-                background-color: var(--text-main);
-                border-radius: 50%;
-                pointer-events: none;
-                z-index: 9999;
-                transform: translate(-50%, -50%);
-                transition: transform 0.1s ease, background-color 0.2s ease;
-            }
-            .custom-cursor-follower {
-                position: fixed;
-                top: 0; left: 0;
-                width: 32px; height: 32px;
-                border: 1px solid var(--border-highlight);
-                border-radius: 50%;
-                pointer-events: none;
-                z-index: 9998;
-                transform: translate(-50%, -50%);
-                transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease, transform 0.15s ease-out;
-            }
-            body:hover .custom-cursor, body:hover .custom-cursor-follower { opacity: 1; }
-            .cursor-hover .custom-cursor { transform: translate(-50%, -50%) scale(0); }
-            .cursor-hover .custom-cursor-follower {
-                width: 60px; height: 60px;
-                background-color: rgba(255, 255, 255, 0.05);
-                border-color: var(--text-secondary);
-                backdrop-filter: blur(2px);
-            }
-        }
-
-        /* ==========================================================================
-           4. NAVBAR
+           2. Navbar
            ========================================================================== */
         .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             position: fixed;
-            top: 0; left: 0; width: 100%;
-            height: var(--nav-height);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
             z-index: 1000;
-            display: flex;
-            align-items: center;
-            transition: var(--transition-smooth);
-            border-bottom: 1px solid transparent;
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
         }
 
         .navbar.scrolled {
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-subtle);
+            box-shadow: var(--shadow-sm);
         }
 
         .nav-container {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            width: 100%;
+            justify-content: space-between;
+            height: 100%;
         }
 
-        .brand {
-            font-size: 1.25rem;
+        .nav-brand {
+            font-size: 1.5rem;
             font-weight: 800;
-            letter-spacing: 1px;
+            color: var(--text-main);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
-        .brand span { color: var(--accent-primary); }
+        .nav-brand i {
+            color: var(--primary-blue);
+        }
 
         .nav-links {
             display: flex;
@@ -198,798 +116,582 @@
         }
 
         .nav-links a {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-            transition: var(--transition-fast);
-        }
-
-        .nav-links a:hover, .nav-links a.active { color: var(--text-main); }
-
-        .nav-actions { display: flex; align-items: center; gap: 16px; }
-
-        .btn-primary {
-            background: var(--text-main);
-            color: var(--bg-base);
-            padding: 10px 24px;
-            border-radius: 100px;
             font-weight: 600;
-            font-size: 0.9rem;
-            transition: var(--transition-fast);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            color: var(--text-muted);
+            transition: var(--transition);
+            font-size: 1.05rem;
         }
 
-        .btn-primary:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-blue);
         }
 
-        .mobile-toggle { display: none; color: var(--text-main); font-size: 1.5rem; }
+        .nav-cta .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--bg-white);
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: var(--transition);
+        }
+
+        .nav-cta .btn-primary:hover {
+            background-color: var(--dark-blue);
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--text-main);
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
 
         /* ==========================================================================
-           5. HERO SECTION
+           3. Hero Section & Slider
            ========================================================================== */
         .hero {
-            padding-top: calc(var(--nav-height) + 60px);
-            padding-bottom: 60px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            position: relative;
+            padding-top: 140px;
+            padding-bottom: 80px;
         }
 
-        .badge {
-            background: var(--bg-surface-elevated);
-            border: 1px solid var(--border-subtle);
-            padding: 6px 16px;
-            border-radius: 100px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            color: var(--text-secondary);
-            margin-bottom: 24px;
-            display: inline-flex;
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
             align-items: center;
-            gap: 8px;
         }
-        .badge i { color: var(--accent-primary); }
 
-        .hero-title {
-            font-size: clamp(3rem, 8vw, 6rem);
-            line-height: 1.1;
+        .hero-content h1 {
+            font-size: 3.5rem;
             font-weight: 900;
-            letter-spacing: -1px;
-            margin-bottom: 24px;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            color: var(--text-main);
         }
 
-        .text-gradient {
-            background: linear-gradient(135deg, #FFF 0%, #86868B 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .hero-content h1 span {
+            color: var(--primary-blue);
         }
 
         .hero-subtitle {
-            font-size: 1.125rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin-bottom: 40px;
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            max-width: 90%;
         }
 
-        .hero-banner-wrapper {
-            width: 100%;
-            max-width: 900px;
-            border-radius: var(--radius-xl);
-            overflow: hidden;
-            position: relative;
-            border: 1px solid var(--border-subtle);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-            margin-top: 20px;
-        }
-
-        .hero-banner-wrapper img {
-            width: 100%;
-            display: block;
-            object-fit: cover;
-            transition: transform 0.8s ease;
-        }
-
-        .hero-banner-wrapper:hover img { transform: scale(1.02); }
-
-        .hero-banner-wrapper::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, transparent 60%, var(--bg-base) 100%);
-            pointer-events: none;
-        }
-
-        /* ==========================================================================
-           6. UPDATE BANNER (Status Card)
-           ========================================================================== */
-        .update-banner {
-            max-width: 800px;
-            margin: 0 auto 60px;
-            background: var(--bg-glass);
-            border: 1px solid var(--border-subtle);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: var(--radius-md);
-            padding: 16px 24px;
+        .hero-buttons {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
             gap: 16px;
         }
 
-        .update-info { display: flex; align-items: center; gap: 16px; }
-
-        .pulse-dot {
-            width: 10px; height: 10px;
-            background: var(--status-success);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--status-success);
-            animation: pulse-animation 2s infinite;
-        }
-
-        @keyframes pulse-animation {
-            0% { box-shadow: 0 0 0 0 rgba(50, 215, 75, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(50, 215, 75, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(50, 215, 75, 0); }
-        }
-
-        .update-text strong { font-family: var(--font-en); color: #fff; margin-left: 8px; }
-        .update-text span { color: var(--text-secondary); font-size: 0.9rem; }
-
-        .update-tags { display: flex; gap: 8px; }
-        .tag {
-            font-family: var(--font-en);
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 100px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid var(--border-subtle);
-        }
-
-        /* ==========================================================================
-           7. STATS SECTION
-           ========================================================================== */
-        .stats-section {
-            padding: 40px 0 80px;
-            border-bottom: 1px solid var(--border-subtle);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            text-align: center;
-        }
-
-        .stat-number {
-            font-family: var(--font-en);
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: var(--text-main);
-            margin-bottom: 8px;
-            display: flex;
-            justify-content: center;
-            align-items: baseline;
-        }
-
-        .stat-symbol { font-size: 2rem; color: var(--accent-primary); margin-left: 4px; }
-        .stat-label { color: var(--text-secondary); font-size: 0.95rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
-
-        /* ==========================================================================
-           8. FEATURED BUILD (v3.0)
-           ========================================================================== */
-        .section-header {
-            margin-bottom: 40px;
-            text-align: center;
-        }
-
-        .section-subtitle {
-            font-family: var(--font-en);
-            color: var(--accent-primary);
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        .section-title { font-size: 2.5rem; font-weight: 800; }
-
-        .featured-section { padding: 80px 0; }
-
-        .featured-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-xl);
-            padding: 40px;
-            display: flex;
+        .btn {
+            display: inline-flex;
             align-items: center;
-            gap: 40px;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-large {
+            padding: 16px 32px;
+            font-size: 1.1rem;
+        }
+
+        .btn-blue {
+            background-color: var(--primary-blue);
+            color: var(--bg-white);
+            box-shadow: 0 4px 14px rgba(22, 119, 255, 0.2);
+        }
+
+        .btn-blue:hover {
+            background-color: var(--dark-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(22, 119, 255, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--bg-white);
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+        }
+
+        /* Banner Slider */
+        .slider-wrapper {
             position: relative;
+            width: 100%;
+            border-radius: var(--border-radius);
             overflow: hidden;
-            transition: var(--transition-smooth);
+            box-shadow: var(--shadow-md);
+            background-color: var(--bg-white);
+            border: 1px solid var(--border-color);
+            aspect-ratio: 4/3;
         }
 
-        .featured-card:hover {
-            border-color: var(--border-highlight);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
-
-        .featured-card::before {
+        .slider-wrapper::after {
             content: '';
             position: absolute;
-            top: -50%; right: -50%; width: 100%; height: 100%;
-            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-            opacity: 0.1;
+            top: 0; left: 0; right: 0; bottom: 0;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2);
+            border-radius: var(--border-radius);
             pointer-events: none;
         }
 
-        .fc-icon-wrapper { flex-shrink: 0; position: relative; }
+        .slider-track {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
 
-        .fc-icon {
-            width: 160px; height: 160px;
-            border-radius: var(--radius-lg);
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            border: 1px solid var(--border-subtle);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
 
-        .fc-content { flex: 1; }
-
-        .fc-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
-
-        .fc-title-area h3 { font-size: 2rem; font-family: var(--font-en); margin-bottom: 8px; }
-        
-        .status-pill {
-            display: inline-flex;
+        /* Styling for CSS-based slides */
+        .slide-css {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            gap: 6px;
-            padding: 6px 12px;
-            border-radius: 100px;
-            font-family: var(--font-en);
-            font-size: 0.75rem;
-            font-weight: 700;
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--bg-white) 100%);
         }
 
-        .status-stable { background: rgba(50, 215, 75, 0.1); color: var(--status-success); border: 1px solid rgba(50, 215, 75, 0.2); }
-        .status-archived { background: rgba(142, 142, 147, 0.1); color: var(--status-archived); border: 1px solid rgba(142, 142, 147, 0.2); }
-        .status-unavailable { background: rgba(255, 69, 58, 0.1); color: var(--status-danger); border: 1px solid rgba(255, 69, 58, 0.2); }
-        .status-soon { background: rgba(255, 159, 10, 0.1); color: var(--status-warning); border: 1px solid rgba(255, 159, 10, 0.2); }
+        .slide-css h3 {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 12px;
+        }
 
-        .fc-desc { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 24px; max-width: 500px; }
-
-        .fc-meta { display: flex; gap: 24px; margin-bottom: 32px; font-family: var(--font-en); font-size: 0.9rem; color: var(--text-tertiary); }
-        .fc-meta span { display: flex; align-items: center; gap: 8px; }
-        .fc-meta i { color: var(--text-secondary); }
-
-        .btn-install {
-            background: var(--accent-primary);
-            color: #fff;
-            padding: 16px 32px;
-            border-radius: var(--radius-md);
+        .slide-css p {
+            color: var(--text-muted);
             font-size: 1.1rem;
-            font-weight: 700;
-            font-family: var(--font-en);
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            transition: var(--transition-smooth);
-            border: 1px solid rgba(255,255,255,0.1);
         }
 
-        .btn-install:hover {
-            background: #0070E5;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(10, 132, 255, 0.3);
+        .slider-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dot.active {
+            width: 24px;
+            border-radius: 4px;
+            background-color: var(--primary-blue);
         }
 
         /* ==========================================================================
-           9. SEARCH & FILTER + BUILDS GRID
+           4. Builds Section
            ========================================================================== */
-        .builds-section { padding: 40px 0 80px; }
-
-        .controls-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-            gap: 20px;
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
         }
 
-        .search-box {
-            position: relative;
-            width: 100%;
-            max-width: 300px;
-        }
-
-        .search-box i {
-            position: absolute;
-            right: 16px; top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-tertiary);
-        }
-
-        .search-input {
-            width: 100%;
-            background: var(--bg-surface);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md);
-            padding: 12px 40px 12px 16px;
+        .section-header h2 {
+            font-size: 2.25rem;
+            font-weight: 800;
             color: var(--text-main);
-            font-family: var(--font-en);
-            font-size: 0.95rem;
-            transition: var(--transition-fast);
-            outline: none;
+            margin-bottom: 8px;
         }
 
-        .search-input:focus { border-color: var(--accent-primary); box-shadow: 0 0 0 2px rgba(10, 132, 255, 0.2); }
-
-        .filter-group { display: flex; gap: 10px; flex-wrap: wrap; }
-
-        .filter-btn {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-subtle);
-            color: var(--text-secondary);
-            padding: 8px 16px;
-            border-radius: 100px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            font-family: var(--font-en);
-            transition: var(--transition-fast);
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
         }
 
-        .filter-btn:hover { background: var(--bg-glass-hover); color: var(--text-main); }
-        .filter-btn.active { background: var(--text-main); color: var(--bg-base); border-color: var(--text-main); }
+        .builds-section {
+            padding: 80px 0;
+        }
 
-        /* Grid */
         .builds-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 24px;
         }
 
-        .build-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-lg);
+        .app-card {
+            background-color: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
             padding: 24px;
             display: flex;
             flex-direction: column;
-            transition: var(--transition-smooth);
+            transition: var(--transition);
             position: relative;
         }
 
-        .build-card:hover {
+        .app-card:hover {
             transform: translateY(-4px);
-            border-color: var(--border-highlight);
-            background: var(--bg-glass-hover);
+            border-color: var(--primary-blue);
+            box-shadow: var(--shadow-hover);
         }
 
-        .bc-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
-        
-        .bc-icon {
-            width: 64px; height: 64px;
-            border-radius: var(--radius-sm);
-            object-fit: cover;
-            border: 1px solid var(--border-subtle);
-        }
-
-        .bc-title { font-family: var(--font-en); font-size: 1.25rem; margin-bottom: 4px; }
-        .bc-desc { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 24px; flex-grow: 1; }
-        
-        .bc-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-subtle); padding-top: 16px; }
-        
-        .bc-req { font-family: var(--font-en); font-size: 0.8rem; color: var(--text-tertiary); }
-        
-        .btn-small {
-            background: rgba(255,255,255,0.05);
-            color: var(--text-main);
-            padding: 8px 16px;
-            border-radius: 100px;
-            font-size: 0.85rem;
-            font-family: var(--font-en);
-            font-weight: 600;
-            border: 1px solid var(--border-subtle);
-            transition: var(--transition-fast);
-        }
-
-        .btn-small:hover:not(:disabled) { background: var(--text-main); color: var(--bg-base); }
-        .btn-small:disabled { opacity: 0.5; cursor: not-allowed; }
-
-        .empty-state {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 60px 0;
-            color: var(--text-secondary);
-            display: none;
-        }
-        .empty-state i { font-size: 3rem; margin-bottom: 16px; opacity: 0.5; }
-
-        /* ==========================================================================
-           10. FEATURES SECTION
-           ========================================================================== */
-        .features-section { padding: 80px 0; background: var(--bg-surface-elevated); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 32px;
-            margin-top: 40px;
-        }
-
-        .feature-card {
-            padding: 32px;
-            background: var(--bg-base);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-lg);
-            transition: var(--transition-smooth);
-        }
-
-        .feature-card:hover { border-color: var(--accent-primary); }
-
-        .feature-icon {
-            width: 48px; height: 48px;
-            background: rgba(10, 132, 255, 0.1);
-            color: var(--accent-primary);
-            border-radius: var(--radius-sm);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.5rem;
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
             margin-bottom: 20px;
         }
 
-        .feature-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 12px; }
-        .feature-desc { color: var(--text-secondary); font-size: 0.95rem; }
-
-        /* ==========================================================================
-           11. INSTALLATION GUIDE
-           ========================================================================== */
-        .guide-section { padding: 80px 0; }
-        
-        .timeline {
-            max-width: 800px;
-            margin: 40px auto 0;
-            position: relative;
+        .app-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 16px;
+            object-fit: cover;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
         }
 
-        .timeline::before {
-            content: '';
-            position: absolute;
-            right: 24px; top: 0; height: 100%; width: 2px;
-            background: var(--border-subtle);
+        .badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 6px 12px;
+            border-radius: 100px;
+            letter-spacing: 0.5px;
         }
 
-        .step {
-            position: relative;
-            padding-right: 60px;
-            margin-bottom: 40px;
+        .badge-stable {
+            background-color: var(--light-blue);
+            color: var(--primary-blue);
         }
 
-        .step:last-child { margin-bottom: 0; }
+        .badge-archived {
+            background-color: #F1F5F9;
+            color: var(--text-muted);
+        }
 
-        .step-num {
-            position: absolute;
-            right: 8px; top: 0;
-            width: 34px; height: 34px;
-            background: var(--bg-surface);
-            border: 2px solid var(--border-highlight);
-            border-radius: 50%;
-            display: flex; justify-content: center; align-items: center;
-            font-family: var(--font-en); font-weight: 800; font-size: 0.9rem;
+        .card-body {
+            flex-grow: 1;
+            margin-bottom: 24px;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 4px;
             color: var(--text-main);
-            z-index: 2;
         }
 
-        .step-content {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-subtle);
-            padding: 24px;
-            border-radius: var(--radius-lg);
+        .card-version {
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            display: block;
         }
 
-        .step-title { font-size: 1.1rem; font-family: var(--font-en); margin-bottom: 8px; color: var(--accent-primary); }
-        .step-desc { color: var(--text-secondary); font-size: 0.95rem; }
+        .card-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .btn-install {
+            width: 100%;
+            background-color: var(--light-blue);
+            color: var(--primary-blue);
+            padding: 14px;
+            border-radius: 8px;
+            font-weight: 700;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-install:hover {
+            background-color: var(--primary-blue);
+            color: var(--bg-white);
+        }
 
         /* ==========================================================================
-           12. DEVELOPERS SECTION
+           5. Developers Section
            ========================================================================== */
-        .team-section { padding: 80px 0; background: var(--bg-surface-elevated); border-top: 1px solid var(--border-subtle); }
+        .team-section {
+            padding: 80px 0 100px;
+        }
 
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 32px;
-            margin-top: 40px;
         }
 
-        .team-card {
-            background: var(--bg-base);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-lg);
-            padding: 32px;
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            transition: var(--transition-smooth);
+        .dev-card {
+            background-color: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 40px 32px;
+            text-align: center;
+            transition: var(--transition);
         }
 
-        .team-card:hover { border-color: var(--border-highlight); transform: translateY(-4px); }
+        .dev-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: #CBD5E1;
+        }
 
-        .team-avatar { position: relative; }
-        .team-img {
-            width: 80px; height: 80px;
+        .dev-avatar-wrapper {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+        }
+
+        .dev-avatar {
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid var(--border-highlight);
+            border: 3px solid var(--bg-white);
+            box-shadow: var(--shadow-sm);
         }
 
-        .verified-badge {
+        .verified-icon {
             position: absolute;
-            bottom: 0; left: 0; /* RTL context */
-            background: var(--bg-base);
-            color: var(--accent-primary);
+            bottom: 4px;
+            right: 4px;
+            background-color: var(--bg-white);
+            color: var(--primary-blue);
             border-radius: 50%;
-            font-size: 1.2rem;
+            font-size: 1.25rem;
         }
 
-        .team-info h4 { font-family: var(--font-en); font-size: 1.2rem; margin-bottom: 4px; }
-        .team-role { color: var(--text-secondary); font-size: 0.85rem; font-family: var(--font-en); margin-bottom: 16px; }
-        
-        .team-social { display: flex; gap: 12px; }
-        .social-btn {
-            width: 36px; height: 36px;
-            border-radius: 50%;
-            background: var(--bg-surface);
-            border: 1px solid var(--border-subtle);
-            display: flex; justify-content: center; align-items: center;
+        .dev-name {
+            font-size: 1.5rem;
+            font-weight: 800;
             color: var(--text-main);
-            transition: var(--transition-fast);
+            margin-bottom: 4px;
         }
-        .social-btn:hover { background: var(--accent-primary); border-color: var(--accent-primary); }
+
+        .dev-role {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+
+        .dev-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn-social {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        .btn-account {
+            background-color: #F8FAFC;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-account:hover {
+            background-color: #F1F5F9;
+            border-color: #CBD5E1;
+        }
+
+        .btn-channel {
+            background-color: var(--light-blue);
+            color: var(--primary-blue);
+            border: 1px solid transparent;
+        }
+
+        .btn-channel:hover {
+            background-color: var(--primary-blue);
+            color: var(--bg-white);
+        }
 
         /* ==========================================================================
-           13. FOOTER
+           6. Footer
            ========================================================================== */
-        footer {
-            border-top: 1px solid var(--border-subtle);
-            padding: 60px 0 30px;
-            background: var(--bg-base);
+        .footer {
+            background-color: var(--bg-white);
+            border-top: 1px solid var(--border-color);
+            padding: 60px 0 24px;
         }
 
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 40px;
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
             margin-bottom: 40px;
         }
 
-        .footer-brand h2 { font-family: var(--font-en); font-size: 1.5rem; margin-bottom: 16px; }
-        .footer-brand p { color: var(--text-secondary); font-size: 0.95rem; max-width: 300px; }
+        .footer-brand {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 12px;
+        }
 
-        .footer-links h4 { font-family: var(--font-en); color: var(--text-main); margin-bottom: 20px; font-size: 0.95rem; letter-spacing: 1px; }
-        .footer-links ul { display: flex; flex-direction: column; gap: 12px; }
-        .footer-links a { color: var(--text-secondary); font-size: 0.9rem; transition: var(--transition-fast); }
-        .footer-links a:hover { color: var(--accent-primary); }
+        .footer-desc {
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            color: var(--text-main);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-blue);
+        }
 
         .footer-bottom {
-            border-top: 1px solid var(--border-subtle);
-            padding-top: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: var(--text-tertiary);
-            font-size: 0.85rem;
-            font-family: var(--font-en);
-        }
-
-        /* ==========================================================================
-           14. MODAL
-           ========================================================================== */
-        .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            z-index: 2000;
-            display: flex; justify-content: center; align-items: center;
-            opacity: 0; visibility: hidden;
-            transition: var(--transition-fast);
-        }
-
-        .modal-overlay.active { opacity: 1; visibility: visible; }
-
-        .modal-content {
-            background: var(--bg-surface-elevated);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-lg);
-            width: 90%; max-width: 400px;
-            padding: 32px;
-            transform: scale(0.95);
-            transition: var(--transition-fast);
             text-align: center;
-        }
-
-        .modal-overlay.active .modal-content { transform: scale(1); }
-
-        .modal-icon {
-            width: 64px; height: 64px;
-            border-radius: var(--radius-sm);
-            margin: 0 auto 24px;
-            object-fit: cover;
-        }
-
-        .modal-title { font-family: var(--font-en); font-size: 1.25rem; margin-bottom: 8px; }
-        .modal-desc { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 24px; }
-
-        .modal-actions { display: flex; flex-direction: column; gap: 12px; }
-        
-        .btn-modal-confirm {
-            background: var(--text-main);
-            color: var(--bg-base);
-            padding: 14px;
-            border-radius: var(--radius-md);
-            font-weight: 700; font-family: var(--font-en);
-            transition: var(--transition-fast);
-        }
-        .btn-modal-confirm:hover { transform: scale(1.02); }
-
-        .btn-modal-cancel {
-            background: transparent;
-            color: var(--text-secondary);
-            padding: 14px;
-            border-radius: var(--radius-md);
-            font-weight: 600; font-family: var(--font-en);
-            transition: var(--transition-fast);
-        }
-        .btn-modal-cancel:hover { background: var(--bg-surface); color: var(--text-main); }
-
-        /* ==========================================================================
-           15. TOAST NOTIFICATIONS
-           ========================================================================== */
-        #toast-container {
-            position: fixed;
-            bottom: 24px; left: 50%;
-            transform: translateX(-50%);
-            z-index: 3000;
-            display: flex; flex-direction: column; gap: 10px;
-            pointer-events: none;
-        }
-
-        .toast {
-            background: var(--bg-surface-elevated);
-            border: 1px solid var(--border-subtle);
-            color: var(--text-main);
-            padding: 12px 24px;
-            border-radius: 100px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
             font-size: 0.9rem;
-            font-family: var(--font-en);
-            display: flex; align-items: center; gap: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            animation: toastSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        @keyframes toastSlideUp {
-            from { opacity: 0; transform: translateY(20px) scale(0.9); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-
-        .toast.hiding { animation: toastSlideDown 0.3s ease-in forwards; }
-        @keyframes toastSlideDown {
-            to { opacity: 0; transform: translateY(20px) scale(0.9); }
         }
 
         /* ==========================================================================
-           16. ANIMATIONS & REVEAL
-           ========================================================================== */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        /* ==========================================================================
-           17. RESPONSIVE DESIGN
+           7. Responsive Design
            ========================================================================== */
         @media (max-width: 992px) {
-            .hero-title { font-size: clamp(2.5rem, 6vw, 4rem); }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+            .hero-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .hero-subtitle {
+                max-width: 100%;
+            }
         }
 
         @media (max-width: 768px) {
-            .nav-links, .nav-actions { display: none; }
-            .mobile-toggle { display: block; }
+            .nav-links, .nav-cta {
+                display: none;
+            }
             
-            .navbar.mobile-open { background: var(--bg-base); border-bottom: 1px solid var(--border-subtle); }
-            .navbar.mobile-open .nav-links {
-                display: flex; flex-direction: column;
-                position: absolute; top: var(--nav-height); left: 0; width: 100%;
-                background: var(--bg-base); border-bottom: 1px solid var(--border-subtle);
-                padding: 24px; gap: 24px;
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .navbar.menu-open {
+                background-color: var(--bg-white);
             }
 
-            .featured-card { flex-direction: column; text-align: center; padding: 24px; }
-            .fc-header { flex-direction: column; align-items: center; gap: 12px; }
-            .fc-meta { justify-content: center; flex-wrap: wrap; }
-            
-            .controls-wrapper { flex-direction: column; align-items: stretch; }
-            .search-box { max-width: 100%; }
-            .filter-group { justify-content: center; }
-
-            .timeline::before { right: 16px; }
-            .step { padding-right: 48px; }
-            .step-num { width: 28px; height: 28px; right: 2px; font-size: 0.8rem; }
-            
-            .footer-grid { grid-template-columns: 1fr; gap: 32px; text-align: center; }
-            .footer-brand p { margin: 0 auto; }
-            .footer-bottom { flex-direction: column; gap: 16px; }
-        }
-
-        /* ==========================================================================
-           18. ACCESSIBILITY (Reduced Motion)
-           ========================================================================== */
-        @media (prefers-reduced-motion: reduce) {
-            *, ::before, ::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
+            .navbar.menu-open .nav-links {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-white);
+                padding: 24px;
+                border-bottom: 1px solid var(--border-color);
+                box-shadow: var(--shadow-md);
             }
-            .reveal { opacity: 1; transform: none; }
+            
+            .navbar.menu-open .nav-cta {
+                display: flex;
+                position: absolute;
+                top: 250px;
+                left: 24px;
+                right: 24px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Ambient Background -->
-    <div class="ambient-bg"></div>
-    <div class="grid-overlay"></div>
-
-    <!-- Custom Cursor (Desktop Only) -->
-    <div class="custom-cursor"></div>
-    <div class="custom-cursor-follower"></div>
-
-    <!-- Toast Container -->
-    <div id="toast-container"></div>
-
-    <!-- Modal Overlay -->
-    <div class="modal-overlay" id="installModal">
-        <div class="modal-content">
-            <img src="https://i.postimg.cc/KYtRCMZq/7A7FE92C-2AEA-4ADE-958C-77B3AAE4C985.jpg" alt="App Icon" class="modal-icon" id="modalIcon">
-            <h3 class="modal-title" id="modalTitle">Hassany IPA v3.0</h3>
-            <p class="modal-desc" id="modalDesc">Are you sure you want to install this build?</p>
-            <div class="modal-actions">
-                <button class="btn-modal-confirm" id="modalConfirmBtn">Continue Installation</button>
-                <button class="btn-modal-cancel" id="modalCancelBtn">Cancel</button>
-            </div>
-        </div>
-    </div>
-
     <!-- Navbar -->
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
-            <a href="#" class="brand cursor-hover">HASSANY <span>IPA</span></a>
+            <a href="#" class="nav-brand">
+                <i class="fa-brands fa-apple"></i> Hassany IPA
+            </a>
             
             <ul class="nav-links" id="navLinks">
-                <li><a href="#hero" class="active cursor-hover">Home</a></li>
-                <li><a href="#builds" class="cursor-hover">Builds</a></li>
-                <li><a href="#features" class="cursor-hover">Features</a></li>
-                <li><a href="#team" class="cursor-hover">Team</a></li>
+                <li><a href="#hero" class="active">الرئيسية</a></li>
+                <li><a href="#builds">الإصدارات</a></li>
+                <li><a href="#team">المطورون</a></li>
             </ul>
 
-            <div class="nav-actions">
-                <a href="#builds" class="btn-primary cursor-hover">استكشف الإصدارات</a>
+            <div class="nav-cta" id="navCta">
+                <a href="#builds" class="btn btn-primary">استكشف الإصدارات</a>
             </div>
 
             <button class="mobile-toggle" id="mobileToggle">
@@ -1000,369 +702,264 @@
 
     <!-- Hero Section -->
     <header class="hero" id="hero">
-        <div class="container">
-            <div class="badge reveal">
-                <i class="fa-brands fa-apple"></i> PREMIUM iOS COLLECTION
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1>أفضل إصدارات <span>8 Ball Pool</span><br>في مكان واحد.</h1>
+                <p class="hero-subtitle">استكشف أحدث إصدارات Hassany IPA وتجربة تثبيت سهلة وسريعة لأجهزة iOS بطريقة آمنة واحترافية.</p>
+                <div class="hero-buttons">
+                    <a href="#builds" class="btn btn-large btn-blue">استكشف الإصدارات</a>
+                    <a href="#team" class="btn btn-large btn-outline">تعرف على الفريق</a>
+                </div>
             </div>
-            
-            <h1 class="hero-title reveal">
-                THE NEXT LEVEL<br>
-                <span class="text-gradient">OF 8 BALL POOL</span>
-            </h1>
-            
-            <p class="hero-subtitle reveal">
-                أضخم منصة لاكتشاف وتثبيت أحدث إصدارات بلياردو المخصصة لأجهزة iOS. تجربة فاخرة، آمنة، وسريعة خالية من التعقيد.
-            </p>
 
-            <div class="hero-banner-wrapper reveal cursor-hover">
-                <img src="https://i.postimg.cc/jdjvKsnf/A79BC279-6634-412D-B515-B17EEBD58831.jpg" alt="8 Ball Pool Premium Banner" loading="eager">
+            <!-- Banner Slider -->
+            <div class="slider-wrapper" id="sliderWrapper">
+                <div class="slider-track" id="sliderTrack">
+                    <!-- Slide 1: Image -->
+                    <div class="slide">
+                        <img src="https://i.postimg.cc/jdjvKsnf/A79BC279-6634-412D-B515-B17EEBD58831.jpg" alt="8 Ball Pool Premium">
+                    </div>
+                    <!-- Slide 2: Clean CSS Card -->
+                    <div class="slide slide-css">
+                        <h3>LATEST RELEASE</h3>
+                        <p>احصل على النسخة الأكثر استقراراً 3.0 الآن.</p>
+                    </div>
+                    <!-- Slide 3: Clean CSS Card -->
+                    <div class="slide slide-css" style="background: linear-gradient(135deg, #F1F5F9 0%, #FFFFFF 100%);">
+                        <h3 style="color: var(--text-main);">PREMIUM BUILDS</h3>
+                        <p>أداء فائق وتوافق تام مع أجهزة iOS.</p>
+                    </div>
+                </div>
+                <!-- Dots -->
+                <div class="slider-dots" id="sliderDots">
+                    <div class="dot active" data-index="0"></div>
+                    <div class="dot" data-index="1"></div>
+                    <div class="dot" data-index="2"></div>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- Update Status Banner -->
-    <section class="container reveal">
-        <div class="update-banner cursor-hover">
-            <div class="update-info">
-                <div class="pulse-dot"></div>
-                <div class="update-text">
-                    <span>LATEST UPDATE</span>
-                    <strong>Hassany IPA v3.0</strong>
-                </div>
-            </div>
-            <div class="update-tags">
-                <span class="tag">STABLE</span>
-                <span class="tag">iOS 15+</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats-section reveal">
-        <div class="container stats-grid">
-            <div>
-                <div class="stat-number"><span class="counter" data-target="10">0</span><span class="stat-symbol">+</span></div>
-                <div class="stat-label">Available Builds</div>
-            </div>
-            <div>
-                <div class="stat-number"><span class="counter" data-target="1">0</span></div>
-                <div class="stat-label">Active Release</div>
-            </div>
-            <div>
-                <div class="stat-number"><span class="counter" data-target="100">0</span><span class="stat-symbol">%</span></div>
-                <div class="stat-label">iOS Focused</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Featured Build (v3.0) -->
-    <section class="featured-section reveal" id="featured">
+    <!-- Builds Section -->
+    <section class="builds-section" id="builds">
         <div class="container">
             <div class="section-header">
-                <span class="section-subtitle">Featured Build</span>
-                <h2 class="section-title">الإصدار الأساسي</h2>
+                <h2>Hassany IPA Builds</h2>
+                <p>مكتبة الإصدارات المتوفرة والمؤرشفة</p>
             </div>
 
-            <div class="featured-card">
-                <div class="fc-icon-wrapper">
-                    <img src="https://i.postimg.cc/KYtRCMZq/7A7FE92C-2AEA-4ADE-958C-77B3AAE4C985.jpg" alt="8 Ball Pool v3.0" class="fc-icon">
+            <div class="builds-grid">
+                
+                <!-- النسخة 3.0 (الرئيسية والشغالة) -->
+                <div class="app-card">
+                    <div class="card-header">
+                        <img src="https://i.postimg.cc/KYtRCMZq/7A7FE92C-2AEA-4ADE-958C-77B3AAE4C985.jpg" alt="Icon" class="app-icon">
+                        <span class="badge badge-stable">LATEST / STABLE</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Hassany IPA 3</h3>
+                        <span class="card-version">Version 3.0</span>
+                        <p class="card-desc">النسخة الأحدث والأكثر استقراراً. توفر أفضل أداء لأجهزة الآيفون والآيباد.</p>
+                    </div>
+                    <!-- الرابط الحقيقي -->
+                    <a href="itms-services://?action=download-manifest&url=https://husszzzz.github.io/8ball-pool/manifest.plist" class="btn-install">
+                        <i class="fa-solid fa-download"></i> تثبيت
+                    </a>
+                </div>
+
+                <!-- النسخة 1.0 -->
+                <div class="app-card">
+                    <div class="card-header">
+                        <img src="https://i.postimg.cc/KYtRCMZq/7A7FE92C-2AEA-4ADE-958C-77B3AAE4C985.jpg" alt="Icon" class="app-icon">
+                        <span class="badge badge-archived">ARCHIVED</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Hassany IPA 1</h3>
+                        <span class="card-version">Version 1.0</span>
+                        <p class="card-desc">الإصدار الكلاسيكي الأول. غير مدعوم حالياً بالتحديثات.</p>
+                    </div>
+                    <!-- الرابط الوهمي -->
+                    <a href="itms-services://?action=download-manifest&url=https://husszzzz.github.io/8ball-pool/error.plist" class="btn-install" style="background-color: #F1F5F9; color: var(--text-muted);">
+                        <i class="fa-solid fa-download"></i> تثبيت
+                    </a>
+                </div>
+
+                <!-- النسخة 2.0 -->
+                <div class="app-card">
+                    <div class="card-header">
+                        <img src="https://i.postimg.cc/KYtRCMZq/7A7FE92C-2AEA-4ADE-958C-77B3AAE4C985.jpg" alt="Icon" class="app-icon">
+                        <span class="badge badge-archived">ARCHIVED</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Hassany IPA 2</h3>
+                        <span class="card-version">Version 2.0</span>
+                        <p class="card-desc">الجيل الثاني من التطبيق. تم إيقاف الدعم عنه.</p>
+                    </div>
+                    <!-- الرابط الوهمي -->
+                    <a href="itms-services://?action=download-manifest&url=https://husszzzz.github.io/8ball-pool/error.plist" class="btn-install" style="background-color: #F1F5F9; color: var(--text-muted);">
+                        <i class="fa-solid fa-download"></i> تثبيت
+                    </a>
+                </div>
+
+                <!-- النسخة 4.0 -->
+                <div class="app-card">
+                    <div class="card-header">
+                        <img src="https://i.postimg.cc/KYtRCMZq/7A7FE92C-2AEA-4ADE-958C-77B3AAE4C985.jpg" alt="Icon" class="app-icon">
+                        <span class="badge badge-archived">UNAVAILABLE</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Hassany IPA 4</h3>
+                        <span class="card-version">Version 4.0</span>
+                        <p class="card-desc">إصدار اختباري واجه مشاكل في التوافق وتم سحبه.</p>
+                    </div>
+                    <a href="itms-services://?action=download-manifest&url=https://husszzzz.github.io/8ball-pool/error.plist" class="btn-install" style="background-color: #F1F5F9; color: var(--text-muted);">
+                        <i class="fa-solid fa-download"></i> تثبيت
+                    </a>
+                </div>
+
+                <!-- النسخة 5.0 -->
+                <div class="app-card">
+                    <div class="card-header">
+                        <img src="https://i.postimg.cc/KYtRCMZq/7A7FE92C-2AEA-4ADE-958C-77B3AAE4C985.jpg" alt="Icon" class="app-icon">
+                        <span class="badge badge-archived">UNAVAILABLE</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Hassany IPA 5</h3>
+                        <span class="card-version">Version 5.0</span>
+                        <p class="card-desc">نسخة خاصة بالمطورين، غير صالحة للاستخدام العام.</p>
+                    </div>
+                    <a href="itms-services://?action=download-manifest&url=https://husszzzz.github.io/8ball-pool/error.plist" class="btn-install" style="background-color: #F1F5F9; color: var(--text-muted);">
+                        <i class="fa-solid fa-download"></i> تثبيت
+                    </a>
+                </div>
+
+                <!-- النسخة 6.0 -->
+                <div class="app-card">
+                    <div class="card-header">
+                        <img src="https://i.postimg.cc/KYtRCMZq/7A7FE92C-2AEA-4ADE-958C-77B3AAE4C985.jpg" alt="Icon" class="app-icon">
+                        <span class="badge badge-archived">UNAVAILABLE</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Hassany IPA 6</h3>
+                        <span class="card-version">Version 6.0</span>
+                        <p class="card-desc">إصدار قديم قيد الصيانة. يُنصح باستخدام النسخة الثالثة.</p>
+                    </div>
+                    <a href="itms-services://?action=download-manifest&url=https://husszzzz.github.io/8ball-pool/error.plist" class="btn-install" style="background-color: #F1F5F9; color: var(--text-muted);">
+                        <i class="fa-solid fa-download"></i> تثبيت
+                    </a>
+                </div>
+
+                <!-- النسخة 7.0 -->
+                <div class="app-card">
+                    <div class="card-header">
+                        <img src="https://i.postimg.cc/KYtRCMZq/7A7FE92C-2AEA-4ADE-958C-77B3AAE4C985.jpg" alt="Icon" class="app-icon">
+                        <span class="badge badge-archived">UNAVAILABLE</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Hassany IPA 7</h3>
+                        <span class="card-version">Version 7.0</span>
+                        <p class="card-desc">تم تعليق هذا الإصدار لأسباب فنية مؤقتة.</p>
+                    </div>
+                    <a href="itms-services://?action=download-manifest&url=https://husszzzz.github.io/8ball-pool/error.plist" class="btn-install" style="background-color: #F1F5F9; color: var(--text-muted);">
+                        <i class="fa-solid fa-download"></i> تثبيت
+                    </a>
+                </div>
+
+                <!-- النسخة 8.0 -->
+                <div class="app-card">
+                    <div class="card-header">
+                        <img src="https://i.postimg.cc/KYtRCMZq/7A7FE92C-2AEA-4ADE-958C-77B3AAE4C985.jpg" alt="Icon" class="app-icon">
+                        <span class="badge badge-archived">UNAVAILABLE</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Hassany IPA 8</h3>
+                        <span class="card-version">Version 8.0</span>
+                        <p class="card-desc">إصدار ملغى لم يتم طرحه رسمياً.</p>
+                    </div>
+                    <a href="itms-services://?action=download-manifest&url=https://husszzzz.github.io/8ball-pool/error.plist" class="btn-install" style="background-color: #F1F5F9; color: var(--text-muted);">
+                        <i class="fa-solid fa-download"></i> تثبيت
+                    </a>
                 </div>
                 
-                <div class="fc-content">
-                    <div class="fc-header">
-                        <div class="fc-title-area">
-                            <h3>Hassany IPA v3.0</h3>
-                            <span class="status-pill status-stable"><i class="fa-solid fa-check-circle"></i> STABLE</span>
-                        </div>
+                <!-- النسخة 9.0 -->
+                <div class="app-card">
+                    <div class="card-header">
+                        <img src="https://i.postimg.cc/KYtRCMZq/7A7FE92C-2AEA-4ADE-958C-77B3AAE4C985.jpg" alt="Icon" class="app-icon">
+                        <span class="badge badge-archived">UNAVAILABLE</span>
                     </div>
-                    
-                    <p class="fc-desc">النسخة الأقوى والأكثر استقراراً، محسنة خصيصاً لتعمل بأفضل أداء على جميع أجهزة الآيفون والآيباد الحديثة.</p>
-                    
-                    <div class="fc-meta">
-                        <span><i class="fa-brands fa-apple"></i> iOS 15.0+</span>
-                        <span><i class="fa-solid fa-arrows-rotate"></i> Updated 2026</span>
+                    <div class="card-body">
+                        <h3 class="card-title">Hassany IPA 9</h3>
+                        <span class="card-version">Version 9.0</span>
+                        <p class="card-desc">إصدار غير متاح للجمهور في الوقت الحالي.</p>
                     </div>
-                    
-                    <!-- الرابط الحقيقي الوحيد للإصدار 3.0 -->
-                    <button class="btn-install cursor-hover install-trigger" 
-                            data-url="itms-services://?action=download-manifest&url=https://husszzzz.github.io/8ball-pool/manifest.plist"
-                            data-version="v3.0"
-                            data-status="STABLE">
-                        <i class="fa-solid fa-cloud-arrow-down"></i> INSTALL NOW
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Builds Grid with Search & Filter -->
-    <section class="builds-section reveal" id="builds">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-subtitle">Archive & Releases</span>
-                <h2 class="section-title">مكتبة الإصدارات</h2>
-            </div>
-
-            <div class="controls-wrapper">
-                <div class="filter-group" id="filterGroup">
-                    <button class="filter-btn active cursor-hover" data-filter="all">ALL</button>
-                    <button class="filter-btn cursor-hover" data-filter="stable">STABLE</button>
-                    <button class="filter-btn cursor-hover" data-filter="archived">ARCHIVED</button>
-                    <button class="filter-btn cursor-hover" data-filter="unavailable">UNAVAILABLE</button>
-                    <button class="filter-btn cursor-hover" data-filter="soon">COMING SOON</button>
-                </div>
-                
-                <div class="search-box">
-                    <input type="text" id="searchInput" class="search-input cursor-hover" placeholder="Search builds...">
-                    <i class="fa-solid fa-search"></i>
-                </div>
-            </div>
-
-            <div class="builds-grid" id="buildsGrid">
-                
-                <!-- Empty State -->
-                <div class="empty-state" id="emptyState">
-                    <i class="fa-solid fa-box-open"></i>
-                    <h3>No builds found</h3>
-                    <p>Try adjusting your search or filter criteria.</p>
+                    <a href="itms-services://?action=download-manifest&url=https://husszzzz.github.io/8ball-pool/error.plist" class="btn-install" style="background-color: #F1F5F9; color: var(--text-muted);">
+                        <i class="fa-solid fa-download"></i> تثبيت
+                    </a>
                 </div>
 
-                <!-- النسخة 1 -->
-                <div class="build-card build-item" data-status="archived" data-version="v1.0">
-                    <div class="bc-header">
-                        <img src="https://i.postimg.cc/KYtRCMZq/7A7FE92C-2AEA-4ADE-958C-77B3AAE4C985.jpg" alt="Icon" class="bc-icon">
-                        <span class="status-pill status-archived">ARCHIVED</span>
+                <!-- النسخة 10.0 -->
+                <div class="app-card">
+                    <div class="card-header">
+                        <img src="https://i.postimg.cc/KYtRCMZq/7A7FE92C-2AEA-4ADE-958C-77B3AAE4C985.jpg" alt="Icon" class="app-icon">
+                        <span class="badge badge-archived">UNAVAILABLE</span>
                     </div>
-                    <h4 class="bc-title">Hassany IPA v1.0</h4>
-                    <p class="bc-desc">الإصدار الكلاسيكي الأول. غير مدعوم حالياً بالتحديثات الأمنية.</p>
-                    <div class="bc-footer">
-                        <span class="bc-req">iOS 13+</span>
-                        <button class="btn-small install-trigger cursor-hover" data-url="itms-services://?action=download-manifest&url=https://husszzzz.github.io/8ball-pool/error.plist" data-version="v1.0" data-status="ARCHIVED">Install</button>
+                    <div class="card-body">
+                        <h3 class="card-title">Hassany IPA 10</h3>
+                        <span class="card-version">Version 10.0</span>
+                        <p class="card-desc">النسخة التجريبية للمستقبل. لم يتم فتح باب التحميل.</p>
                     </div>
-                </div>
-
-                <!-- النسخة 2 -->
-                <div class="build-card build-item" data-status="archived" data-version="v2.0">
-                    <div class="bc-header">
-                        <img src="https://i.postimg.cc/KYtRCMZq/7A7FE92C-2AEA-4ADE-958C-77B3AAE4C985.jpg" alt="Icon" class="bc-icon">
-                        <span class="status-pill status-archived">ARCHIVED</span>
-                    </div>
-                    <h4 class="bc-title">Hassany IPA v2.0</h4>
-                    <p class="bc-desc">نسخة الجيل الثاني مع بعض التحسينات الطفيفة. تم الاستغناء عنها.</p>
-                    <div class="bc-footer">
-                        <span class="bc-req">iOS 14+</span>
-                        <button class="btn-small install-trigger cursor-hover" data-url="itms-services://?action=download-manifest&url=https://husszzzz.github.io/8ball-pool/error.plist" data-version="v2.0" data-status="ARCHIVED">Install</button>
-                    </div>
-                </div>
-
-                <!-- النسخة 4 -->
-                <div class="build-card build-item" data-status="unavailable" data-version="v4.0">
-                    <div class="bc-header">
-                        <img src="https://i.postimg.cc/KYtRCMZq/7A7FE92C-2AEA-4ADE-958C-77B3AAE4C985.jpg" alt="Icon" class="bc-icon">
-                        <span class="status-pill status-unavailable">UNAVAILABLE</span>
-                    </div>
-                    <h4 class="bc-title">Hassany IPA v4.0</h4>
-                    <p class="bc-desc">إصدار اختباري واجه بعض مشاكل التوافق وتم إيقافه مؤقتاً.</p>
-                    <div class="bc-footer">
-                        <span class="bc-req">iOS 16+</span>
-                        <button class="btn-small install-trigger cursor-hover" data-url="itms-services://?action=download-manifest&url=https://husszzzz.github.io/8ball-pool/error.plist" data-version="v4.0" data-status="UNAVAILABLE">Install</button>
-                    </div>
-                </div>
-
-                <!-- النسخة 5 -->
-                <div class="build-card build-item" data-status="unavailable" data-version="v5.0">
-                    <div class="bc-header">
-                        <img src="https://i.postimg.cc/KYtRCMZq/7A7FE92C-2AEA-4ADE-958C-77B3AAE4C985.jpg" alt="Icon" class="bc-icon">
-                        <span class="status-pill status-unavailable">UNAVAILABLE</span>
-                    </div>
-                    <h4 class="bc-title">Hassany IPA v5.0</h4>
-                    <p class="bc-desc">نسخة للمطورين فقط، غير متاحة للتحميل العام حالياً.</p>
-                    <div class="bc-footer">
-                        <span class="bc-req">iOS 16+</span>
-                        <button class="btn-small install-trigger cursor-hover" data-url="itms-services://?action=download-manifest&url=https://husszzzz.github.io/8ball-pool/error.plist" data-version="v5.0" data-status="UNAVAILABLE">Install</button>
-                    </div>
-                </div>
-
-                <!-- النسخة 6 -->
-                <div class="build-card build-item" data-status="unavailable" data-version="v6.0">
-                    <div class="bc-header">
-                        <img src="https://i.postimg.cc/KYtRCMZq/7A7FE92C-2AEA-4ADE-958C-77B3AAE4C985.jpg" alt="Icon" class="bc-icon">
-                        <span class="status-pill status-unavailable">UNAVAILABLE</span>
-                    </div>
-                    <h4 class="bc-title">Hassany IPA v6.0</h4>
-                    <p class="bc-desc">نسخة خاصة تحت الصيانة الدورية.</p>
-                    <div class="bc-footer">
-                        <span class="bc-req">iOS 15+</span>
-                        <button class="btn-small install-trigger cursor-hover" data-url="itms-services://?action=download-manifest&url=https://husszzzz.github.io/8ball-pool/error.plist" data-version="v6.0" data-status="UNAVAILABLE">Install</button>
-                    </div>
-                </div>
-
-                <!-- النسخة 7 -->
-                <div class="build-card build-item" data-status="unavailable" data-version="v7.0">
-                    <div class="bc-header">
-                        <img src="https://i.postimg.cc/KYtRCMZq/7A7FE92C-2AEA-4ADE-958C-77B3AAE4C985.jpg" alt="Icon" class="bc-icon">
-                        <span class="status-pill status-unavailable">UNAVAILABLE</span>
-                    </div>
-                    <h4 class="bc-title">Hassany IPA v7.0</h4>
-                    <p class="bc-desc">تم تعليق هذا الإصدار لأسباب فنية مؤقتة.</p>
-                    <div class="bc-footer">
-                        <span class="bc-req">iOS 15+</span>
-                        <button class="btn-small install-trigger cursor-hover" data-url="itms-services://?action=download-manifest&url=https://husszzzz.github.io/8ball-pool/error.plist" data-version="v7.0" data-status="UNAVAILABLE">Install</button>
-                    </div>
-                </div>
-
-                <!-- النسخة 8 -->
-                <div class="build-card build-item" data-status="soon" data-version="v8.0">
-                    <div class="bc-header">
-                        <img src="https://i.postimg.cc/KYtRCMZq/7A7FE92C-2AEA-4ADE-958C-77B3AAE4C985.jpg" alt="Icon" class="bc-icon">
-                        <span class="status-pill status-soon">COMING SOON</span>
-                    </div>
-                    <h4 class="bc-title">Hassany IPA v8.0</h4>
-                    <p class="bc-desc">قيد التطوير. ستحمل ميزات جديدة كلياً وتوافقاً أفضل مع الأجهزة الأحدث.</p>
-                    <div class="bc-footer">
-                        <span class="bc-req">iOS 17+</span>
-                        <button class="btn-small cursor-hover" disabled>Install</button>
-                    </div>
-                </div>
-
-                <!-- النسخة 9 -->
-                <div class="build-card build-item" data-status="soon" data-version="v9.0">
-                    <div class="bc-header">
-                        <img src="https://i.postimg.cc/KYtRCMZq/7A7FE92C-2AEA-4ADE-958C-77B3AAE4C985.jpg" alt="Icon" class="bc-icon">
-                        <span class="status-pill status-soon">COMING SOON</span>
-                    </div>
-                    <h4 class="bc-title">Hassany IPA v9.0</h4>
-                    <p class="bc-desc">مخطط للإصدار في الربع الأخير من العام القادم.</p>
-                    <div class="bc-footer">
-                        <span class="bc-req">iOS 17+</span>
-                        <button class="btn-small cursor-hover" disabled>Install</button>
-                    </div>
-                </div>
-
-                <!-- النسخة 10 -->
-                <div class="build-card build-item" data-status="soon" data-version="v10.0">
-                    <div class="bc-header">
-                        <img src="https://i.postimg.cc/KYtRCMZq/7A7FE92C-2AEA-4ADE-958C-77B3AAE4C985.jpg" alt="Icon" class="bc-icon">
-                        <span class="status-pill status-soon">COMING SOON</span>
-                    </div>
-                    <h4 class="bc-title">Hassany IPA v10.0</h4>
-                    <p class="bc-desc">الجيل المستقبلي من التطبيق. التفاصيل غير معلنة حالياً.</p>
-                    <div class="bc-footer">
-                        <span class="bc-req">TBA</span>
-                        <button class="btn-small cursor-hover" disabled>Install</button>
-                    </div>
+                    <a href="itms-services://?action=download-manifest&url=https://husszzzz.github.io/8ball-pool/error.plist" class="btn-install" style="background-color: #F1F5F9; color: var(--text-muted);">
+                        <i class="fa-solid fa-download"></i> تثبيت
+                    </a>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features-section reveal" id="features">
+    <!-- Developers Section -->
+    <section class="team-section" id="team">
         <div class="container">
             <div class="section-header">
-                <span class="section-subtitle">Why Hassany IPA?</span>
-                <h2 class="section-title">مميزات المنصة</h2>
-            </div>
-
-            <div class="features-grid">
-                <div class="feature-card cursor-hover">
-                    <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
-                    <h3 class="feature-title">Fast Installation</h3>
-                    <p class="feature-desc">تثبيت سريع ومباشر بضغطة زر واحدة دون الحاجة إلى المرور بإعلانات مزعجة أو روابط معقدة.</p>
-                </div>
-                <div class="feature-card cursor-hover">
-                    <div class="feature-icon"><i class="fa-brands fa-apple"></i></div>
-                    <h3 class="feature-title">iOS Focused</h3>
-                    <p class="feature-desc">جميع الإصدارات مبنية ومخصصة للعمل بتوافق تام مع أنظمة iOS للحصول على أداء مستقر.</p>
-                </div>
-                <div class="feature-card cursor-hover">
-                    <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                    <h3 class="feature-title">Secure Interface</h3>
-                    <p class="feature-desc">تصميم شفاف، آمن، واحترافي يضمن لك معرفة كل التفاصيل قبل البدء بعملية التثبيت.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Installation Guide -->
-    <section class="guide-section reveal">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-subtitle">How To Install</span>
-                <h2 class="section-title">دليل التثبيت</h2>
-            </div>
-
-            <div class="timeline">
-                <div class="step">
-                    <div class="step-num">01</div>
-                    <div class="step-content cursor-hover">
-                        <h4 class="step-title">Choose your build</h4>
-                        <p class="step-desc">اختر الإصدار المناسب لجهازك (نوصي بالإصدار v3.0 لكونه الأكثر استقراراً).</p>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-num">02</div>
-                    <div class="step-content cursor-hover">
-                        <h4 class="step-title">Tap Install</h4>
-                        <p class="step-desc">اضغط على زر التثبيت ووافق على الرسالة التأكيدية التي ستظهر لك.</p>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-num">03</div>
-                    <div class="step-content cursor-hover">
-                        <h4 class="step-title">Follow iOS Process</h4>
-                        <p class="step-desc">سيطلب منك النظام تأكيد التثبيت من خلال رسالة النظام الخاصة بـ iTunes، اضغط "تثبيت".</p>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-num">04</div>
-                    <div class="step-content cursor-hover">
-                        <h4 class="step-title">Launch & Enjoy</h4>
-                        <p class="step-desc">اذهب إلى الشاشة الرئيسية، انتظر اكتمال التحميل واستمتع بالنسخة.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Team Section -->
-    <section class="team-section reveal" id="team">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-subtitle">The Team</span>
-                <h2 class="section-title">فريق التطوير</h2>
+                <h2>فريق التطوير</h2>
+                <p>تعرف على الأشخاص خلف Hassany IPA</p>
             </div>
 
             <div class="team-grid">
-                <!-- Hassany -->
-                <div class="team-card cursor-hover">
-                    <div class="team-avatar">
-                        <img src="https://i.postimg.cc/tTXW55ht/9C1D94CB-B4E5-4FEC-B2E0-82993E815D6A.jpg" alt="Hassany" class="team-img">
-                        <i class="fa-solid fa-circle-check verified-badge"></i>
+                <!-- Developer 1 -->
+                <div class="dev-card">
+                    <div class="dev-avatar-wrapper">
+                        <img src="https://i.postimg.cc/tTXW55ht/9C1D94CB-B4E5-4FEC-B2E0-82993E815D6A.jpg" alt="Hassany" class="dev-avatar">
+                        <i class="fa-solid fa-circle-check verified-icon" title="Verified"></i>
                     </div>
-                    <div class="team-info">
-                        <h4>Hassany</h4>
-                        <p class="team-role">CEO & iOS Developer</p>
-                        <div class="team-social">
-                            <a href="https://telegram.me/OM_G9" target="_blank" class="social-btn" aria-label="Telegram"><i class="fa-paper-plane"></i></a>
-                            <a href="https://telegram.me/hassanyIPA" target="_blank" class="social-btn" aria-label="Channel"><i class="fa-bullhorn"></i></a>
-                        </div>
+                    <h3 class="dev-name">Hassany</h3>
+                    <p class="dev-role">CEO & iOS Developer</p>
+                    
+                    <div class="dev-buttons">
+                        <a href="https://telegram.me/OM_G9" target="_blank" class="btn-social btn-account">
+                            <i class="fa-brands fa-telegram"></i> Telegram — الحساب
+                        </a>
+                        <a href="https://telegram.me/hassanyIPA" target="_blank" class="btn-social btn-channel">
+                            <i class="fa-solid fa-bullhorn"></i> Telegram — القناة
+                        </a>
                     </div>
                 </div>
 
-                <!-- IDK -->
-                <div class="team-card cursor-hover">
-                    <div class="team-avatar">
-                        <img src="https://i.postimg.cc/SNjKynXR/DB72732C-6EF8-4581-9929-DB02D76733C0.jpg" alt="idk" class="team-img">
+                <!-- Developer 2 -->
+                <div class="dev-card">
+                    <div class="dev-avatar-wrapper">
+                        <img src="https://i.postimg.cc/SNjKynXR/DB72732C-6EF8-4581-9929-DB02D76733C0.jpg" alt="idk" class="dev-avatar">
                     </div>
-                    <div class="team-info">
-                        <h4>idk</h4>
-                        <p class="team-role">Co-Developer</p>
-                        <div class="team-social">
-                            <a href="https://telegram.me/x_arw" target="_blank" class="social-btn" aria-label="Telegram"><i class="fa-paper-plane"></i></a>
-                            <a href="https://telegram.me/xar_ipa" target="_blank" class="social-btn" aria-label="Channel"><i class="fa-bullhorn"></i></a>
-                        </div>
+                    <h3 class="dev-name">idk</h3>
+                    <p class="dev-role">Co-Developer</p>
+                    
+                    <div class="dev-buttons">
+                        <a href="https://telegram.me/x_arw" target="_blank" class="btn-social btn-account">
+                            <i class="fa-brands fa-telegram"></i> Telegram — الحساب
+                        </a>
+                        <a href="https://telegram.me/xar_ipa" target="_blank" class="btn-social btn-channel">
+                            <i class="fa-solid fa-bullhorn"></i> Telegram — القناة
+                        </a>
                     </div>
                 </div>
             </div>
@@ -1370,304 +967,104 @@
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer class="footer">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <h2>HASSANY <span>IPA</span></h2>
-                    <p>أضخم منصة لاكتشاف وتثبيت أحدث إصدارات iOS المخصصة. تجربة احترافية وتحديثات مستمرة.</p>
-                </div>
+            <div class="footer-content">
+                <div class="footer-brand">HASSANY IPA</div>
+                <p class="footer-desc">Premium 8 Ball Pool iOS Builds</p>
                 <div class="footer-links">
-                    <h4>NAVIGATION</h4>
-                    <ul>
-                        <li><a href="#hero">Home</a></li>
-                        <li><a href="#builds">Builds</a></li>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#team">Team</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>SOCIAL</h4>
-                    <ul>
-                        <li><a href="https://telegram.me/hassanyIPA" target="_blank">Telegram Channel</a></li>
-                        <li><a href="https://telegram.me/OM_G9" target="_blank">Developer Support</a></li>
-                    </ul>
+                    <a href="#hero">الرئيسية</a>
+                    <a href="#builds">الإصدارات</a>
+                    <a href="#team">المطورون</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Hassany Store. All rights reserved.</p>
-                <p>Status: <span style="color: var(--status-success);">● Online</span> | Version 3.0</p>
+                <p>&copy; 2026 Hassany Store. جميع الحقوق محفوظة.</p>
             </div>
         </div>
     </footer>
 
-    <!-- ==========================================================================
-         JAVASCRIPT ARCHITECTURE
-         ========================================================================== -->
+    <!-- JavaScript Logic -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // 1. Navbar Scroll Effect
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 10) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // 2. Mobile Menu Toggle
+            const mobileToggle = document.getElementById('mobileToggle');
+            const icon = mobileToggle.querySelector('i');
             
-            // 1. App Configuration
-            const IS_MOBILE = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            const PREFERS_REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-            // 2. Custom Cursor Logic (Desktop only)
-            const initCursor = () => {
-                if (IS_MOBILE || PREFERS_REDUCED_MOTION) return;
-                
-                const cursor = document.querySelector('.custom-cursor');
-                const follower = document.querySelector('.custom-cursor-follower');
-                const hoverElements = document.querySelectorAll('.cursor-hover');
-
-                let mouseX = 0, mouseY = 0;
-                let followerX = 0, followerY = 0;
-
-                document.addEventListener('mousemove', (e) => {
-                    mouseX = e.clientX;
-                    mouseY = e.clientY;
-                    
-                    // Instant follow for small dot
-                    cursor.style.left = `${mouseX}px`;
-                    cursor.style.top = `${mouseY}px`;
-                });
-
-                // Smooth follow animation for outer ring
-                const render = () => {
-                    followerX += (mouseX - followerX) * 0.15;
-                    followerY += (mouseY - followerY) * 0.15;
-                    follower.style.left = `${followerX}px`;
-                    follower.style.top = `${followerY}px`;
-                    requestAnimationFrame(render);
-                };
-                requestAnimationFrame(render);
-
-                // Add hover states
-                hoverElements.forEach(el => {
-                    el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-                    el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-                });
-            };
-
-            // 3. Navigation & Mobile Menu
-            const initNav = () => {
-                const navbar = document.getElementById('navbar');
-                const mobileToggle = document.getElementById('mobileToggle');
-                
-                // Scroll behavior
-                window.addEventListener('scroll', () => {
-                    if (window.scrollY > 20) {
-                        navbar.classList.add('scrolled');
-                    } else {
-                        navbar.classList.remove('scrolled');
-                    }
-                }, { passive: true });
-
-                // Mobile menu toggle
-                mobileToggle.addEventListener('click', () => {
-                    navbar.classList.toggle('mobile-open');
-                    const icon = mobileToggle.querySelector('i');
-                    if(navbar.classList.contains('mobile-open')) {
-                        icon.classList.replace('fa-bars', 'fa-times');
-                    } else {
-                        icon.classList.replace('fa-times', 'fa-bars');
-                    }
-                });
-
-                // Close mobile menu on link click
-                document.querySelectorAll('.nav-links a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        navbar.classList.remove('mobile-open');
-                        mobileToggle.querySelector('i').classList.replace('fa-times', 'fa-bars');
-                    });
-                });
-            };
-
-            // 4. Scroll Reveal Animations
-            const initReveal = () => {
-                if (PREFERS_REDUCED_MOTION) {
-                    document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
-                    return;
+            mobileToggle.addEventListener('click', () => {
+                navbar.classList.toggle('menu-open');
+                if (navbar.classList.contains('menu-open')) {
+                    icon.classList.replace('fa-bars', 'fa-times');
+                } else {
+                    icon.classList.replace('fa-times', 'fa-bars');
                 }
+            });
 
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('active');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
-
-                document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-            };
-
-            // 5. Animated Counters
-            const initCounters = () => {
-                const counters = document.querySelectorAll('.counter');
-                
-                const animateCounter = (counter) => {
-                    const target = +counter.getAttribute('data-target');
-                    const duration = 2000; 
-                    const start = 0;
-                    let startTime = null;
-
-                    const step = (timestamp) => {
-                        if (!startTime) startTime = timestamp;
-                        const progress = Math.min((timestamp - startTime) / duration, 1);
-                        
-                        // easeOutQuart formula
-                        const easeOut = 1 - Math.pow(1 - progress, 4);
-                        
-                        counter.innerText = Math.floor(easeOut * target);
-                        
-                        if (progress < 1) {
-                            requestAnimationFrame(step);
-                        } else {
-                            counter.innerText = target;
-                        }
-                    };
-                    requestAnimationFrame(step);
-                };
-
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            animateCounter(entry.target);
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.5 });
-
-                counters.forEach(counter => observer.observe(counter));
-            };
-
-            // 6. Search & Filtering System
-            const initFilters = () => {
-                const searchInput = document.getElementById('searchInput');
-                const filterBtns = document.querySelectorAll('.filter-btn');
-                const buildItems = document.querySelectorAll('.build-item');
-                const emptyState = document.getElementById('emptyState');
-
-                let currentFilter = 'all';
-                let currentSearch = '';
-
-                const filterAndSearch = () => {
-                    let visibleCount = 0;
-
-                    buildItems.forEach(item => {
-                        const status = item.getAttribute('data-status');
-                        const title = item.querySelector('.bc-title').innerText.toLowerCase();
-                        const version = item.getAttribute('data-version').toLowerCase();
-                        
-                        const matchesFilter = (currentFilter === 'all') || (status === currentFilter);
-                        const matchesSearch = title.includes(currentSearch) || version.includes(currentSearch);
-
-                        if (matchesFilter && matchesSearch) {
-                            item.style.display = 'flex';
-                            visibleCount++;
-                        } else {
-                            item.style.display = 'none';
-                        }
-                    });
-
-                    // Handle empty state
-                    emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
-                };
-
-                // Filter click logic
-                filterBtns.forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        filterBtns.forEach(b => b.classList.remove('active'));
-                        e.target.classList.add('active');
-                        currentFilter = e.target.getAttribute('data-filter');
-                        filterAndSearch();
-                    });
+            // Close mobile menu on link click
+            document.querySelectorAll('.nav-links a, .nav-cta a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navbar.classList.remove('menu-open');
+                    icon.classList.replace('fa-times', 'fa-bars');
                 });
+            });
 
-                // Search input logic
-                if(searchInput) {
-                    searchInput.addEventListener('input', (e) => {
-                        currentSearch = e.target.value.toLowerCase().trim();
-                        filterAndSearch();
-                    });
-                }
+            // 3. Banner Slider Logic (Smooth & Clean)
+            const track = document.getElementById('sliderTrack');
+            const dots = document.querySelectorAll('.dot');
+            const slideCount = dots.length;
+            let currentIndex = 0;
+            let sliderInterval;
+
+            const updateSlider = (index) => {
+                // Since direction is RTL, X translates positively to go to next slides depending on flex direction.
+                // Using 100% per slide. In RTL, translating positive X moves content left (shows right content).
+                track.style.transform = `translateX(${index * 100}%)`;
+                
+                // Update dots
+                dots.forEach(dot => dot.classList.remove('active'));
+                dots[index].classList.add('active');
+                
+                currentIndex = index;
             };
 
-            // 7. Toast Notification System
-            const showToast = (message, iconClass = 'fa-circle-info') => {
-                const container = document.getElementById('toast-container');
-                const toast = document.createElement('div');
-                toast.className = 'toast';
-                toast.innerHTML = `<i class="fa-solid ${iconClass}"></i> <span>${message}</span>`;
-                
-                container.appendChild(toast);
-
-                setTimeout(() => {
-                    toast.classList.add('hiding');
-                    toast.addEventListener('animationend', () => toast.remove());
-                }, 3000);
+            const nextSlide = () => {
+                let nextIndex = (currentIndex + 1) % slideCount;
+                updateSlider(nextIndex);
             };
 
-            // 8. Modal & Installation Logic
-            const initModal = () => {
-                const modal = document.getElementById('installModal');
-                const triggers = document.querySelectorAll('.install-trigger');
-                const confirmBtn = document.getElementById('modalConfirmBtn');
-                const cancelBtn = document.getElementById('modalCancelBtn');
-                
-                let targetURL = '';
-
-                // Open modal
-                triggers.forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        targetURL = btn.getAttribute('data-url');
-                        const version = btn.getAttribute('data-version');
-                        const status = btn.getAttribute('data-status');
-
-                        document.getElementById('modalTitle').innerText = `Hassany IPA ${version}`;
-                        document.getElementById('modalDesc').innerText = `You are about to install a ${status} build. Do you want to proceed?`;
-                        
-                        modal.classList.add('active');
-                        document.body.style.overflow = 'hidden'; // prevent scroll
-                    });
-                });
-
-                // Close modal
-                const closeModal = () => {
-                    modal.classList.remove('active');
-                    document.body.style.overflow = '';
-                    targetURL = '';
-                };
-
-                cancelBtn.addEventListener('click', closeModal);
-                
-                // Close on outside click
-                modal.addEventListener('click', (e) => {
-                    if(e.target === modal) closeModal();
-                });
-
-                // Confirm Installation
-                confirmBtn.addEventListener('click', () => {
-                    if (targetURL) {
-                        showToast('Preparing installation...', 'fa-spinner fa-spin');
-                        // Use small timeout to allow toast to render before redirecting
-                        setTimeout(() => {
-                            window.location.href = targetURL;
-                            closeModal();
-                        }, 500);
-                    }
-                });
+            // Setup Auto Play (4 seconds)
+            const startSlider = () => {
+                sliderInterval = setInterval(nextSlide, 4000);
             };
 
-            // Initialize all modules
-            initCursor();
-            initNav();
-            initReveal();
-            initCounters();
-            initFilters();
-            initModal();
+            const resetSlider = () => {
+                clearInterval(sliderInterval);
+                startSlider();
+            };
+
+            // Dot Click Events
+            dots.forEach(dot => {
+                dot.addEventListener('click', (e) => {
+                    const index = parseInt(e.target.getAttribute('data-index'));
+                    updateSlider(index);
+                    resetSlider();
+                });
+            });
+
+            // Start Slider
+            startSlider();
         });
     </script>
+
 </body>
 </html>
